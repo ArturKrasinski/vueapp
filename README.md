@@ -1,50 +1,50 @@
-Czêœæ 1: VUE - przyk³adowa aplikacja
-(architektura aplikacji, problem zagnie¿d¿ania zdarzeñ)
+CzÄ™Å›Ä‡ 1: VUE - przykÅ‚adowa aplikacja
+(architektura aplikacji, problem zagnieÅ¼dÅ¼ania zdarzeÅ„)
 
-1. stworzenie projektu firebase, konfiguracja z vue cli, pobranie danych i wyœwietlenie (~1h)
-   1. za³o¿enie projektu w firebase
+1. stworzenie projektu firebase, konfiguracja z vue cli, pobranie danych i wyÅ›wietlenie (~1h)
+   1. zaÅ‚oÅ¼enie projektu w firebase
    2. import danych z json do firebase
-   3. zaci¹gniêcie czystego projektu (przygotowanego wczeœniej w git)
+   3. zaciÄ…gniÄ™cie czystego projektu (przygotowanego wczeÅ›niej w git)
    4. import configu do projektu
-   5. nawi¹zanie po³¹czenia z baz¹
-   6. wyœwietlanie pobieranych danych
-2. wyœwietlenie komponentu tabeli gdzie bêd¹ v-for’y wyœwietlaj¹ce ca³oœæ danych (~0,5)
-   1. stworzenie komponentu tabeli i zaimportowanie go do g³ównego komponentu
-   2. pobranie danych w g³ównym komponencie i przekazanie go do komponentu tabeli
-   3. wrzucenie paczki ze stylami (sass) do komponentu tabeli 
-3. wyodrêbnienie komponentu table product (0,5) 
-   1. stworzenie nowego komponentu “table product”
+   5. nawiÄ…zanie poÅ‚Ä…czenia z bazÄ…
+   6. wyÅ›wietlanie pobieranych danych
+2. wyÅ›wietlenie komponentu tabeli gdzie bÄ™dÄ… v-forâ€™y wyÅ›wietlajÄ…ce caÅ‚oÅ›Ä‡ danych (~0,5)
+   1. stworzenie komponentu tabeli i zaimportowanie go do gÅ‚Ã³wnego komponentu
+   2. pobranie danych w gÅ‚Ã³wnym komponencie i przekazanie go do komponentu tabeli
+   3. wrzucenie paczki ze stylami (sass) do komponentu tabeli
+3. wyodrÄ™bnienie komponentu table product (0,5)
+   1. stworzenie nowego komponentu â€œtable productâ€
    2. zaimportowanie komponentu do komponentu tabeli
-4. w komponencie table product wyodrêbnienie child komponentów: image, price, title, availability, buttons (1)
-   1. przygotowanie plików ma³ych komponentów
+4. w komponencie table product wyodrÄ™bnienie child komponentÃ³w: image, price, title, availability, buttons (1)
+   1. przygotowanie plikÃ³w maÅ‚ych komponentÃ³w
    2. zaimportowanie ich do komponentu produktu
-   3. obs³u¿enie ró¿nych stanów dla komponentu price i availability
+   3. obsÅ‚uÅ¼enie rÃ³Å¼nych stanÃ³w dla komponentu price i availability
       1. stany price: zwykla, special, special z przekreslona cena
-      2. stany availability: dostepny, niedostepny, na zamówienie
-5. podzielenie button na dwa oddzielne buttony i obs³u¿enie eventu (0,5)
+      2. stany availability: dostepny, niedostepny, na zamÃ³wienie
+5. podzielenie button na dwa oddzielne buttony i obsÅ‚uÅ¼enie eventu (0,5)
    1. stworzenie komponentu button dodaj do koszyka
       1. stworzenie przycisku
       2. stworzenie inputa (qty)
-      3. obs³u¿enie emitowania zdarzenia z klikniêciem przycisku dodaj do koszyka
+      3. obsÅ‚uÅ¼enie emitowania zdarzenia z klikniÄ™ciem przycisku dodaj do koszyka
    1. stworzenie komponentu button dodaj do wishlisty
       1. przygotowanie html przycisku
-      2. obs³u¿enie emitowania zdarzenia klikniêcia przycisku
-   1. import child komponentów do g³ównego komponentu buttons
-   2. obs³u¿enie reakcji na zdarzenia emitowane z child buttonów
-6. dodanie funkcjonalnoœci wyœwietlania listy koszyka / listy ¿yczeñ (podstawowe czyli tytu³ produktu i label listy) (0,5)
-   1. przygotowanie komponentów
-   2. import do g³ównego modu³u
-   3. aktualizacja list w zale¿noœci na klikniêcia w przyciski
-      1. wyœwietlanie produktów dodanych do konkretnej listy
+      2. obsÅ‚uÅ¼enie emitowania zdarzenia klikniÄ™cia przycisku
+   1. import child komponentÃ³w do gÅ‚Ã³wnego komponentu buttons
+   2. obsÅ‚uÅ¼enie reakcji na zdarzenia emitowane z child buttonÃ³w
+6. dodanie funkcjonalnoÅ›ci wyÅ›wietlania listy koszyka / listy Å¼yczeÅ„ (podstawowe czyli tytuÅ‚ produktu i label listy) (0,5)
+   1. przygotowanie komponentÃ³w
+   2. import do gÅ‚Ã³wnego moduÅ‚u
+   3. aktualizacja list w zaleÅ¼noÅ›ci na klikniÄ™cia w przyciski
+      1. wyÅ›wietlanie produktÃ³w dodanych do konkretnej listy
 
 
-Czêœæ 2: VUEX
-(teoria / prezentacja + wdro¿enie)
+CzÄ™Å›Ä‡ 2: VUEX
+(teoria / prezentacja + wdroÅ¼enie)
 1. Teoria na temat VUEX (1)
-2. Podpiêcie VUEX do projektu (1)
-   1. instalacja modu³u node
-   2. import do g³ównego modu³u
+2. PodpiÄ™cie VUEX do projektu (1)
+   1. instalacja moduÅ‚u node
+   2. import do gÅ‚Ã³wnego moduÅ‚u
 3. Przygotowanie metod (1)
-   1. obs³u¿enie dodaj / usuñ itemu z kolekcji + pobranie ca³ej kolekcji koszyka
-   2. obs³u¿enie dodaj / usuñ itemu z kolekcji + pobranie ca³ej kolekcji wishlisty
-4. Wyœwietlanie wszystkich danych na podstawie globalnego store
+   1. obsÅ‚uÅ¼enie dodaj / usuÅ„ itemu z kolekcji + pobranie caÅ‚ej kolekcji koszyka
+   2. obsÅ‚uÅ¼enie dodaj / usuÅ„ itemu z kolekcji + pobranie caÅ‚ej kolekcji wishlisty
+4. WyÅ›wietlanie wszystkich danych na podstawie globalnego store

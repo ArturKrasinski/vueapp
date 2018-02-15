@@ -43,7 +43,12 @@ let mainUrls = [{
     icon: 'assignment',
     title: 'Tasks',
     target: 'tasks'
-}]
+}, {
+    icon: 'get_app',
+    title: 'FirebaseExample',
+    target: 'firebase'
+},
+]
 
 export default {
     data () {

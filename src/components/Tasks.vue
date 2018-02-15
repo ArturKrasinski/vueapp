@@ -14,7 +14,7 @@
 <p class="unchanged rich-diff-level-one">Część 1: VUE - przykładowa aplikacja
 (architektura aplikacji, problem zagnieżdżania zdarzeń)</p>
 <ol class="unchanged rich-diff-level-one">
-<li class="unchanged">stworzenie projektu firebase, konfiguracja z vue cli, pobranie danych i wyświetlenie (~1h)
+<li class="unchanged">stworzenie projektu <a href="https://firebase.google.com/">firebase</a>, <a href="https://medium.com/codingthesmartway-com-blog/vue-js-2-firebase-e4b2479e35a8">konfiguracja</a> z vue cli, pobranie danych i wyświetlenie (~1h)
 <ol class="unchanged">
 <li class="unchanged">założenie projektu w firebase</li>
 <li class="unchanged">import danych z json do firebase</li>
@@ -98,6 +98,12 @@
 </li>
 <li class="unchanged">Wyświetlanie wszystkich danych na podstawie globalnego store</li>
 </ol>
+<br>
+<h4>Linki</h4>
+<ul>
+<li><a href="https://material.io/icons/">Ikony dla Vuetify</a></li>
+<li><a href="https://firebase.google.com/">Firebase</a></li>
+<li><a href="https://medium.com/codingthesmartway-com-blog/vue-js-2-firebase-e4b2479e35a8">Konfiguracja firebase + vue-cli: </a></li>
+</ul>
 </div>
-
 </template>
