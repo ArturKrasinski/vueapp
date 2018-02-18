@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Tasks from '@/components/Tasks'
 import FirebaseExample from '@/components/FirebaseExample'
+import ProductsMonolithTable from '@/components/ProductsMonolithTable'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
         path: '/firebase',
         name: 'Firebase',
         component: FirebaseExample
+    },
+    {
+        path: '/monolith-table',
+        name: 'ProductsMonolithTable',
+        component: ProductsMonolithTable
     }
     ]
 })

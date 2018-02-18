@@ -12,5 +12,10 @@ export default [{
         icon: 'system_update_alt',
         title: 'Firebase',
         target: 'firebase'
+    },
+    {
+        icon: 'system_update_alt',
+        title: 'Monolith products table',
+        target: 'monolith-table'
     }
 ];
