@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueFire from 'vuefire'
 
 import App from './AppDark'
 import router from './router'
@@ -29,7 +30,7 @@ Vue.use(Vuetify, {
         transitions
     },
     theme: {
-        primary: '#ee44aa',
+        primary: '#f4993a',
         secondary: '#424242',
         accent: '#82B1FF',
         error: '#FF5252',
@@ -38,6 +39,8 @@ Vue.use(Vuetify, {
         warning: '#FFC107'
     }
 })
+
+Vue.use(VueFire)
 
 Vue.config.productionTip = false
 
