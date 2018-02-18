@@ -5,7 +5,7 @@
     <table>
         <tr>
             <td></td>
-            <td v-for="product in productsWithAttributes">
+            <td v-for="(product, index) in productsWithAttributes" :key="index">
                 <v-card>
                     <p class="image-wrapper">
                         <img :src="getProductImage(product.image)" height="200px">
@@ -19,17 +19,17 @@
                 </v-card>
             </td>
         </tr>
-        <tr v-for="(attribute, attributeId) in attributes">
+        <tr v-for="(attribute, attributeId) in attributes" :key="attributeId">
             <td><b>{{attribute.name}}</b></td>
-            <td v-for="product in productsWithAttributes">
-                <span v-for="attributeValue in product.attributesValuesArray[attributeId]">{{attributeValue}}</span>
+            <td v-for="(product, index) in productsWithAttributes" :key="index">
+                <span v-for="(attributeValue, index) in product.attributesValuesArray[attributeId]" :key="index">{{attributeValue}}</span>
             </td>
         </tr>
     </table>
 </template>
 
 <script>
-import {VCard, VCardTitle, VCardActions} from 'vuetify/es5/components/VCard'
+import { VCard, VCardTitle, VCardActions } from 'vuetify/es5/components/VCard'
 import db from '../services/db'
 
 let productImageDir = '/static/products/'
@@ -37,39 +37,46 @@ let productImageDir = '/static/products/'
 export default {
     name: 'ProductsMonolithTable',
     components: {
+        VCard,
+        VCardTitle,
+        VCardActions
     },
     firebase: {
-attributes: db.ref('attributes')
+        attributes: db.ref('attributes')
     },
     data () {
         return {
             productsArray: [],
-            attributesArray: [],
-            attributesIdValueArray: []
+            attributesIdValueArray: [],
+            productAttributesValues: []
+        }
+    },
+    watch: {
+        attributesIdValueArray (values) {
+            this.productAttributesValues = values.map(attribute => {
+                return attribute['.value'].split('|')
+            })
         }
     },
     computed: {
         productsWithAttributes () {
-            let products = this.productsArray
+            const products = this.productsArray
 
-            let attributesIdValueSplited = [];
-
-            this.attributesIdValueArray.forEach((currentAttributeValues)=> {
-                attributesIdValueSplited.push(currentAttributeValues['.value'].split('|'))
-            })
-            for (let productIndex in products) {
-                let productData = products[productIndex]
-                let productAttributes = productData.attributes;
+            this.productsArray.forEach(productData => {
                 productData.attributesValuesArray = []
+
+                const productAttributes = productData.attributes
+
                 for (let attributeId in productAttributes) {
                     let productAttributesArray = productAttributes[attributeId].split('|')
-                    productAttributesArray.forEach( (productAttributesValuesId) => {
+
+                    productAttributesArray.forEach(productAttributesValuesId => {
                         productData.attributesValuesArray[attributeId] = productData.attributesValuesArray[attributeId] || []
-                        productData.attributesValuesArray[attributeId].push(attributesIdValueSplited[attributeId][productAttributesValuesId - 1])
+                        productData.attributesValuesArray[attributeId].push(this.productAttributesValues[attributeId][productAttributesValuesId - 1])
                     })
-               }
-            }
-            console.log(products)
+                }
+            })
+
             return products
         }
     },
@@ -80,7 +87,6 @@ attributes: db.ref('attributes')
     },
     mounted () {
         this.$bindAsArray('attributesIdValueArray', db.ref('attributesIdValue'))
-        this.$bindAsArray('attributesArray', db.ref('attributes'))
         this.$bindAsArray('productsArray', db.ref('products'))
     }
 }
