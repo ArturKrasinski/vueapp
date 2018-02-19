@@ -6,17 +6,7 @@
         <tr>
             <td></td>
             <td v-for="(product, index) in productsWithAttributes" :key="index">
-                <v-card>
-                    <p class="image-wrapper">
-                        <img :src="getProductImage(product.image)" height="200px">
-                    </p>
-                    <v-card-title primary-title>{{product.name}}
-                    </v-card-title>
-                    <v-card-actions>
-                        <v-btn color="red">koszyk</v-btn>
-                        <v-btn color="blue">wishlista</v-btn>
-                    </v-card-actions>
-                </v-card>
+                <product :product="product"></product>
             </td>
         </tr>
         <tr v-for="(attribute, id) in attributes" :key="id">
@@ -29,17 +19,14 @@
 </template>
 
 <script>
-import { VCard, VCardTitle, VCardActions } from 'vuetify/es5/components/VCard'
-import db from '../services/db'
 
-let productImageDir = '/static/products/'
+import db from '../services/db'
+import Product from './Product/Product'
 
 export default {
     name: 'ProductsMonolithTable',
     components: {
-        VCard,
-        VCardTitle,
-        VCardActions
+        Product
     },
     firebase: {
         attributes: db.ref('attributes')
@@ -72,11 +59,6 @@ export default {
                     })
                 }
             })
-        }
-    },
-    methods: {
-        getProductImage (imageName) {
-            return productImageDir + imageName
         }
     },
     mounted () {
