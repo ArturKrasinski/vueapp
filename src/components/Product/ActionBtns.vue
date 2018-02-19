@@ -18,10 +18,10 @@
         ],
         methods: {
             addToCart (sku) {
-                this.$emit('addToCart', { payload: sku })
+                this.$emit('addToCart', { sku })
             },
             addToWishlist (sku) {
-                this.$emit('addToWishlist', { payload: sku })
+                this.$emit('addToWishlist', { sku })
             }
         }
     }
