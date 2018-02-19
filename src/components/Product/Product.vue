@@ -2,7 +2,11 @@
   <v-card>
         <product-image :image="product.image"></product-image>
         <product-details :name="product.name"></product-details>
-        <action-btns></action-btns>
+        <action-btns
+            @addToCart="addToCart($event)"
+            @addToWishlist="addToWishlist($event)"
+            :sku="product.sku"
+        ></action-btns>
     </v-card>
 </template>
 
@@ -22,7 +26,15 @@
         },
         props: [
             'product'
-        ]
+        ],
+        methods: {
+            addToCart (payload) {
+                this.$emit('addToCart', payload)
+            },
+            addToWishlist (payload) {
+                this.$emit('addToWishlist', payload)
+            }
+        }
     }
 </script>
 

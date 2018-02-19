@@ -6,7 +6,11 @@
         <tr>
             <td></td>
             <td v-for="(product, index) in productsWithAttributes" :key="index">
-                <product :product="product"></product>
+                <product
+                    :product="product"
+                    @addToCart="addToCart($event)"
+                    @addToWishlist="addToWishlist($event)"
+                ></product>
             </td>
         </tr>
         <tr v-for="(attribute, id) in attributes" :key="id">
@@ -59,6 +63,14 @@ export default {
                     })
                 }
             })
+        }
+    },
+    methods: {
+        addToCart (payload) {
+            console.log(payload)
+        },
+        addToWishlist (payload) {
+            console.log(payload)
         }
     },
     mounted () {
