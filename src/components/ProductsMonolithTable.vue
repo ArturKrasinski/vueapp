@@ -19,10 +19,10 @@
                 </v-card>
             </td>
         </tr>
-        <tr v-for="(attribute, attributeId) in attributes" :key="attributeId">
+        <tr v-for="(attribute, id) in attributes" :key="id">
             <td><b>{{attribute.name}}</b></td>
             <td v-for="(product, index) in productsWithAttributes" :key="index">
-                <span v-for="(attributeValue, index) in product.attributesValuesArray[attributeId]" :key="index">{{attributeValue}}</span>
+                <span v-for="(attributeValue, index) in product.attributes[id]" :key="index">{{attributeValue}}</span>
             </td>
         </tr>
     </table>
@@ -60,24 +60,18 @@ export default {
     },
     computed: {
         productsWithAttributes () {
-            const products = this.productsArray
+            return this.productsArray.map(product => {
+                return {
+                    ...product,
+                    attributes: product.attributes.map((attribute, index) => {
+                        const attributesValues = attribute.split('|').map(id => {
+                            return this.productAttributesValues[index][parseInt(id) - 1]
+                        })
 
-            this.productsArray.forEach(productData => {
-                productData.attributesValuesArray = []
-
-                const productAttributes = productData.attributes
-
-                for (let attributeId in productAttributes) {
-                    let productAttributesArray = productAttributes[attributeId].split('|')
-
-                    productAttributesArray.forEach(productAttributesValuesId => {
-                        productData.attributesValuesArray[attributeId] = productData.attributesValuesArray[attributeId] || []
-                        productData.attributesValuesArray[attributeId].push(this.productAttributesValues[attributeId][productAttributesValuesId - 1])
+                        return attributesValues
                     })
                 }
             })
-
-            return products
         }
     },
     methods: {
