@@ -1,35 +1,46 @@
 <template>
-    <div class="minicart" v-if="items.length">
-        <h4>Minicart</h4>
-        <ul>
-            <li v-for="(item, index) in items" :key="index">
-                <minicart-item :item="item"></minicart-item>
-            </li>
-        </ul>
-        <div>Suma: {{ this.orderSum.toFixed(2) }}</div>
+    <div class="minicart">
+        <h4 @click="toggleExpanded()">Minicart <span v-if="count">({{ count }})</span></h4>
+        <div class="wrapper" v-show="expanded">
+            <ul>
+                <li v-for="(item, index) in items" :key="index">
+                    <minicart-item @removeItem="removeItemFromCart($event)" :item="item"></minicart-item>
+                </li>
+            </ul>
+            <div>Suma: {{ fixedTotals }}</div>
+        </div>
     </div>
 </template>
 
 <script>
+    import { createNamespacedHelpers } from 'vuex'
     import MinicartItem from './MinicartItem'
 
-    const INITIAL_ORDER_SUM_VALUE = 0
+    const { mapState, mapActions } = createNamespacedHelpers('minicart')
 
     export default {
         name: 'Minicart',
         components: {
             MinicartItem
         },
-        props: [
-            'items'
-        ],
         computed: {
-            orderSum () {
-                return this.items.reduce((prev, currItem) => {
-                    const { qty, price } = currItem
-
-                    return prev + (qty * price)
-                }, INITIAL_ORDER_SUM_VALUE)
+            ...mapState({
+                expanded: state => state.expanded,
+                count: state => state.count,
+                items: state => state.items,
+                totals: state => state.totals
+            }),
+            fixedTotals () {
+                return this.totals.toFixed(2)
+            }
+        },
+        methods: {
+            ...mapActions([
+                'toggleExpanded',
+                'removeFromCart'
+            ]),
+            removeItemFromCart (sku) {
+                this.removeFromCart(sku)
             }
         }
     }
