@@ -76,32 +76,6 @@ export default {
         }
     },
     methods: {
-        addToCart (payload) {
-            const product = this.productsArray.find(product => {
-                return product.sku === payload.sku
-            })
-
-            const { name, sku, price } = product
-            const productData = {
-                name,
-                sku,
-                price: price.value
-            }
-
-            let modified = false
-
-            this.minicartItems = this.minicartItems.map(item => {
-                if (item.sku === sku) {
-                    modified = true
-                    return { ...item, qty: item.qty + 1 }
-                }
-                return item
-            })
-
-            if (!modified) {
-                this.minicartItems = [...this.minicartItems, {...productData, qty: 1}]
-            }
-        },
         addToWishlist (payload) {
             console.log(payload)
         }
