@@ -17,8 +17,10 @@
             'sku'
         ],
         methods: {
-            addToCart (sku) {
-                this.$emit('addToCart', { sku })
+            addToCart () {
+                const qty = 1
+
+                this.$emit('addToCart', { sku: this.sku, qty })
             },
             addToWishlist (sku) {
                 this.$emit('addToWishlist', { sku })
