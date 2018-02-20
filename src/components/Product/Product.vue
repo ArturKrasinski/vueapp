@@ -2,6 +2,7 @@
   <v-card>
         <product-image :image="product.image"></product-image>
         <product-details :name="product.name"></product-details>
+        <product-price :value="product.price.value" :type="product.price.type" :old="product.price.old"></product-price>
         <action-btns
             @addToCart="addItemToCart($event)"
             @addToWishlist="addToWishlist($event)"
@@ -15,6 +16,7 @@
     import { VCard } from 'vuetify/es5/components/VCard'
     import ProductImage from './ProductImage'
     import ProductDetails from './ProductDetails'
+    import ProductPrice from './ProductPrice'
     import ActionBtns from './ActionBtns'
 
     const { mapActions } = createNamespacedHelpers('minicart')
@@ -25,6 +27,7 @@
             VCard,
             ProductImage,
             ProductDetails,
+            ProductPrice,
             ActionBtns
         },
         props: [
