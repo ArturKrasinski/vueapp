@@ -34,21 +34,7 @@
 </template>
 
 <script>
-
-let mainUrls = [{
-    icon: 'home',
-    title: 'Główna',
-    target: '/'
-}, {
-    icon: 'assignment',
-    title: 'Tasks',
-    target: 'tasks'
-}, {
-    icon: 'get_app',
-    title: 'FirebaseExample',
-    target: 'firebase'
-},
-]
+import Menu from '../config/menu.js'
 
 export default {
     data () {
@@ -56,7 +42,7 @@ export default {
             clipped: false,
             drawer: false,
             fixed: false,
-            items: mainUrls,
+            items: Menu,
             miniVariant: false,
             right: true,
             rightDrawer: false,

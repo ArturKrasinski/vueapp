@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueFire from 'vuefire'
 
 import App from './AppDark'
 import router from './router'
@@ -38,6 +39,8 @@ Vue.use(Vuetify, {
         warning: '#FFC107'
     }
 })
+
+Vue.use(VueFire)
 
 Vue.config.productionTip = false
 
