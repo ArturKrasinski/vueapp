@@ -41,27 +41,26 @@ export default {
         Product
     },
     firebase: {
-        attributes: db.ref('attributes')
+        products: db.ref('products'),
+        attributes: db.ref('attributes'),
+        attributesIdValue: db.ref('attributesIdValue')
     },
     data () {
         return {
+            products: [],
             minicartItems: [],
             wishlistItems: [],
-            productsArray: [],
-            attributesIdValueArray: [],
-            productAttributesValues: []
-        }
-    },
-    watch: {
-        attributesIdValueArray (values) {
-            this.productAttributesValues = values.map(attribute => {
-                return attribute['.value'].split('|')
-            })
+            attributesIdValue: []
         }
     },
     computed: {
+        productAttributesValues () {
+            return this.attributesIdValue.map(attribute => {
+                return attribute['.value'].split('|')
+            })
+        },
         productsWithAttributes () {
-            return this.productsArray.map(product => {
+            return this.products.map(product => {
                 return {
                     ...product,
                     attributes: product.attributes.map((attribute, index) => {
@@ -79,10 +78,6 @@ export default {
         addToWishlist (payload) {
             console.log(payload)
         }
-    },
-    mounted () {
-        this.$bindAsArray('attributesIdValueArray', db.ref('attributesIdValue'))
-        this.$bindAsArray('productsArray', db.ref('products'))
     }
 }
 </script>
