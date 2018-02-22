@@ -1,25 +1,31 @@
 <template>
     <div class="wrapper">
-        <minicart :items="minicartItems"></minicart>
-        <wishlist :items="wishlistItems"></wishlist>
-        <table class="main-table">
-            <tr>
-                <td class="main-table_title-col"></td>
-                <td v-for="(product, index) in productsWithAttributes" :key="index">
-                    <product
-                        :product="product"
-                        @addToCart="addToCart($event)"
-                        @addToWishlist="addToWishlist($event)"
-                    ></product>
-                </td>
-            </tr>
-            <tr v-for="(attribute, id) in attributes" :key="id">
-                <td><b>{{attribute.name}}</b></td>
-                <td v-for="(product, index) in productsWithAttributes" :key="index">
-                    <span v-for="(attributeValue, index) in product.attributes[id]" :key="index">{{attributeValue}}</span>
-                </td>
-            </tr>
-        </table>
+        <div class="state-panel_wrapper">
+            <div class="state-panel"><minicart :items="minicartItems"></minicart></div>
+            <div class="state-panel"><wishlist :items="wishlistItems"></wishlist></div>
+        </div>
+        <div class="main-table_wrapper">
+            <table class="main-table">
+                <tr>
+                    <td class="main-table_title-col"></td>
+                    <td v-for="(product, index) in productsWithAttributes" :key="index">
+                        <product
+                            :product="product"
+                            @addToCart="addToCart($event)"
+                            @addToWishlist="addToWishlist($event)"
+                        ></product>
+                    </td>
+                </tr>
+                <tr v-for="(attribute, id) in attributes" :key="id">
+                    <td><b>{{attribute.name}}</b></td>
+                    <td v-for="(product, index) in productsWithAttributes" :key="index">
+                        <span v-for="(attributeValue, index) in product.attributes[id]" :key="index">
+                            {{attributeValue}}<span v-if="index !== product.attributes[id].length - 1">, </span>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 
@@ -80,6 +86,9 @@ export default {
 </script>
 
 <style>
+    .state-panel {
+        width: 33%;
+    }
     .image-wrapper {
         padding: 12px 0;
         margin: 0 10px;
@@ -95,6 +104,15 @@ export default {
         padding-top: 12px;
         padding-bottom: 12px;
         margin: 0;
+    }
+    .main-table {
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .main-table_wrapper {
+        width: 1600px;
+        padding: 12px 0 48px 0;
+        overflow-x: scroll;
     }
     .main-table tr:nth-child(2n + 1) td:not(:first-child){
         background: rgba(0,0,0, 0.2);

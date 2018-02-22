@@ -56,6 +56,7 @@
         background: #ffffff;
         text-align: center;
         border-radius: 2px;
+        color: #333333;
     }
     .addToCart-actions_button {
         flex-grow: 3;
