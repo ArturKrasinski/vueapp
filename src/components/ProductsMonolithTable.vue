@@ -65,7 +65,7 @@ export default {
                     ...product,
                     attributes: product.attributes.map((attribute, index) => {
                         const attributesValues = attribute.split('|').map(id => {
-                            return this.productAttributesValues[index][parseInt(id) - 1]
+                            return this.productAttributesValues[index] ? this.productAttributesValues[index][parseInt(id) - 1] : null
                         })
 
                         return attributesValues
