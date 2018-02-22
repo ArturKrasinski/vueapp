@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import products from './modules/products'
+import products from './modules/products/state'
 import minicart from './modules/minicart/state'
 
 Vue.use(Vuex)
