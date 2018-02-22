@@ -1,13 +1,10 @@
-<style>
-
-</style>
 <template>
     <div class="wrapper">
         <minicart :items="minicartItems"></minicart>
         <wishlist :items="wishlistItems"></wishlist>
-        <table>
+        <table class="main-table">
             <tr>
-                <td></td>
+                <td class="main-table_title-col"></td>
                 <td v-for="(product, index) in productsWithAttributes" :key="index">
                     <product
                         :product="product"
@@ -81,3 +78,32 @@ export default {
     }
 }
 </script>
+
+<style>
+    .image-wrapper {
+        padding: 12px 0;
+        margin: 0 10px;
+        text-align: center;
+        border-bottom: dashed 1px rgba(255, 255, 255, 0.1);
+    }
+    .card {
+        width: 250px;
+    }
+    .card__title{
+        font-weight: bold;
+        font-size: 1.8em;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        margin: 0;
+    }
+    .main-table tr:nth-child(2n + 1) td:not(:first-child){
+        background: rgba(0,0,0, 0.2);
+    }
+    .main-table td {
+        padding: 5px;
+    }
+    .main-table tr:nth-child(2n + 1) td:first-child{
+        white-space: nowrap;
+        padding-right: 10px;
+    }
+</style>
