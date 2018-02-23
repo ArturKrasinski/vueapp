@@ -19,9 +19,7 @@
                 <tr v-for="(attribute, id) in attributesList" :key="id">
                     <td><b>{{attribute.name}}</b></td>
                     <td v-for="(product, index) in productsList" :key="index">
-                        <span v-for="(attributeValue, index) in product.attributes[id]" :key="index">
-                            {{attributeValue}}<span v-if="index !== product.attributes[id].length - 1">, </span>
-                        </span>
+                        {{product.attributes[id].join(', ')}}
                     </td>
                 </tr>
             </table>
