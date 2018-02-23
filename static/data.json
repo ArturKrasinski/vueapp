@@ -24,7 +24,8 @@
       "quantity": 28,
       "price": {
         "value": 2,
-        "type": "special"
+        "type": "special",
+        "old": 3.2
       },
       "attributes": {
         "0": "1",
@@ -60,7 +61,8 @@
       "quantity": 3,
       "price": {
         "value": 1.74,
-        "type": "special"
+        "type": "special",
+        "old": 2.56
       },
       "attributes": {
         "0": "4",
@@ -188,7 +190,8 @@
       "quantity": 44,
       "price": {
         "value": 3,
-        "type": "simple"
+        "type": "simple",
+        "old": 1.2
       },
       "attributes": {
         "0": "6",
